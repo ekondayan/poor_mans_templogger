@@ -1,0 +1,16 @@
+[Unit]
+Description=The plugin-driven server agent for reporting metrics into InfluxDB
+Documentation=https://github.com/influxdata/telegraf
+After=influxdb.service
+
+[Service]
+User=pi
+Environment=INFLUX_TOKEN=
+ExecStart=-/home/pi/templogger/bin/telegraf --config /home/pi/templogger/etc/telegraf/telegraf_sys.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartForceExitStatus=SIGPIPE
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

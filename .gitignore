@@ -1,0 +1,6 @@
+
+src/bin/influx
+
+src/bin/influxd
+
+src/bin/telegraf
